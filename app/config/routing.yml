@@ -1,0 +1,11 @@
+ecommerce:
+    resource: "@EcommerceBundle/Resources/config/routing.yml"
+    prefix:   /ecommerce/
+
+ed.partchelbel:
+    resource: "@Ed_partchelbelBundle/Resources/config/routing.yml"
+    prefix:   /edpartchelbel/
+
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation

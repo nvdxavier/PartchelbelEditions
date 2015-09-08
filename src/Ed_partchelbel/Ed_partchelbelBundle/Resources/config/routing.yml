@@ -1,0 +1,25 @@
+ed.partchelbel_homepage:
+    path:     /hello.{_format}
+    defaults: { _controller: "Ed_partchelbelBundle:Default:index", _format: html }
+    requirements:
+          _format : html
+
+ed.partchelbel_first:
+    path:  /{id}/first.{_format}
+    defaults: { _controller: "Ed_partchelbelBundle:Default:firstTest", _format: html }
+    requirements:
+          _format : html
+          id: \d+
+
+ed.partchelbel_second:
+    path:  /second.{_format}
+    defaults: { _controller: "Ed_partchelbelBundle:Default:secondTest", _format: html }
+    requirements:
+          _format : html
+
+ed.partchelbel_third:
+    path:  /{id}/third.{_format}
+    defaults: { _controller: "Ed_partchelbelBundle:Default:thirdTest", _format: html }
+    requirements:
+         _format : html
+         id: \d+

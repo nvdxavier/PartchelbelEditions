@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+<ul>
+    <li><a href="{{ path('ed.partchelbel_homepage') ~ '.html' }}">acceuil</a></li>
+    <li><a href="{{ path('ed.partchelbel_first', {'id': 666})  ~ '.html'}}">first</a></li>
+    <li><a href="{{ path('ed.partchelbel_second') ~ '.html' }}">second</a></li>
+    <li><a href="{{ path('ed.partchelbel_third', {'id': 555})  ~ '.html'}}">third</a></li>
+</ul>
+{% block body %}{% endblock %}
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>
