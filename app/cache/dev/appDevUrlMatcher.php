@@ -127,31 +127,40 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
-        if (0 === strpos($pathinfo, '/e')) {
-            // ecommerce_homepage
-            if ($pathinfo === '/ecommerce/hello') {
-                return array (  '_controller' => 'Ed_partchelbel\\EcommerceBundle\\Controller\\DefaultController::indexAction',  '_route' => 'ecommerce_homepage',);
+        // pages
+        if (0 === strpos($pathinfo, '/page') && preg_match('#^/page/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'pages')), array (  '_controller' => 'Pages\\PagesBundle\\Controller\\PagesController::pageAction',));
+        }
+
+        // produits
+        if (rtrim($pathinfo, '/') === '') {
+            if (substr($pathinfo, -1) !== '/') {
+                return $this->redirect($pathinfo.'/', 'produits');
             }
 
-            if (0 === strpos($pathinfo, '/edpartchelbel')) {
-                // ed.partchelbel_homepage
-                if (0 === strpos($pathinfo, '/edpartchelbel/hello') && preg_match('#^/edpartchelbel/hello(?:\\.(?P<_format>html))?$#s', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'ed.partchelbel_homepage')), array (  '_controller' => 'Ed_partchelbel\\Ed_partchelbelBundle\\Controller\\DefaultController::indexAction',  '_format' => 'html',));
+            return array (  '_controller' => 'Edpartchelbel\\EdpartchelbelBundle\\Controller\\ProduitsController::produitsAction',  '_route' => 'produits',);
+        }
+
+        if (0 === strpos($pathinfo, '/p')) {
+            // presentation
+            if ($pathinfo === '/produit') {
+                return array (  '_controller' => 'Edpartchelbel\\EdpartchelbelBundle\\Controller\\ProduitsController::presentationAction',  '_route' => 'presentation',);
+            }
+
+            if (0 === strpos($pathinfo, '/panier')) {
+                // panier
+                if ($pathinfo === '/panier') {
+                    return array (  '_controller' => 'Edpartchelbel\\EdpartchelbelBundle\\Controller\\PanierController::panierAction',  '_route' => 'panier',);
                 }
 
-                // ed.partchelbel_first
-                if (preg_match('#^/edpartchelbel/(?P<id>\\d+)/first(?:\\.(?P<_format>html))?$#s', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'ed.partchelbel_first')), array (  '_controller' => 'Ed_partchelbel\\Ed_partchelbelBundle\\Controller\\DefaultController::firstTestAction',  '_format' => 'html',));
+                // livraison
+                if ($pathinfo === '/panier/livraison') {
+                    return array (  '_controller' => 'Edpartchelbel\\EdpartchelbelBundle\\Controller\\PanierController::livraisonAction',  '_route' => 'livraison',);
                 }
 
-                // ed.partchelbel_second
-                if (0 === strpos($pathinfo, '/edpartchelbel/second') && preg_match('#^/edpartchelbel/second(?:\\.(?P<_format>html))?$#s', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'ed.partchelbel_second')), array (  '_controller' => 'Ed_partchelbel\\Ed_partchelbelBundle\\Controller\\DefaultController::secondTestAction',  '_format' => 'html',));
-                }
-
-                // ed.partchelbel_third
-                if (preg_match('#^/edpartchelbel/(?P<id>\\d+)/third(?:\\.(?P<_format>html))?$#s', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'ed.partchelbel_third')), array (  '_controller' => 'Ed_partchelbel\\Ed_partchelbelBundle\\Controller\\DefaultController::thirdTestAction',  '_format' => 'html',));
+                // validation
+                if ($pathinfo === '/panier/validation') {
+                    return array (  '_controller' => 'Edpartchelbel\\EdpartchelbelBundle\\Controller\\PanierController::validationAction',  '_route' => 'validation',);
                 }
 
             }

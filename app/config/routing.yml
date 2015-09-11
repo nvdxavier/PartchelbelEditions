@@ -1,10 +1,10 @@
-ecommerce:
-    resource: "@EcommerceBundle/Resources/config/routing.yml"
-    prefix:   /ecommerce/
+pages:
+    resource: "@PagesBundle/Resources/config/routing.yml"
+    prefix:   /
 
-ed.partchelbel:
-    resource: "@Ed_partchelbelBundle/Resources/config/routing.yml"
-    prefix:   /edpartchelbel/
+edpartchelbel:
+    resource: "@EdpartchelbelBundle/Resources/config/routing.yml"
+    prefix:   /
 
 app:
     resource: "@AppBundle/Controller/"
