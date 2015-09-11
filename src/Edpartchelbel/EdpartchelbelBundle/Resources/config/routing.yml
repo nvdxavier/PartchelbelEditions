@@ -1,0 +1,20 @@
+produits:
+    path:     /
+    defaults: { _controller: EdpartchelbelBundle:Produits:produits }
+
+
+presentation:
+    path:     /produit
+    defaults: { _controller: EdpartchelbelBundle:Produits:presentation }
+
+panier:
+    path:     /panier
+    defaults: { _controller: EdpartchelbelBundle:Panier:panier }
+
+livraison:
+    path:    /panier/livraison
+    defaults: { _controller: EdpartchelbelBundle:Panier:livraison }
+
+validation:
+    path:    /panier/validation
+    defaults: { _controller: EdpartchelbelBundle:Panier:validation }
