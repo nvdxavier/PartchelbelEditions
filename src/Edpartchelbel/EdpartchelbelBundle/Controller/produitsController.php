@@ -14,4 +14,9 @@ class ProduitsController extends Controller
     {
         return $this->render('EdpartchelbelBundle:Default:produits/layout/presentation.html.twig');
     }
+
+    private function sayHello()
+    {
+        return "HELLO !!!";
+    }
 }
